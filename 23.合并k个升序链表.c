@@ -17,5 +17,6 @@
 struct ListNode* mergeKLists(struct ListNode** lists, int listsSize){
 
 }
+
 // @lc code=end
 
