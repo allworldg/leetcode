@@ -1,7 +1,6 @@
 // @before-stub-for-debug-begin
 #include <vector>
 #include <string>
-#include "commoncppproblem141.h"
 
 using namespace std;
 // @before-stub-for-debug-end

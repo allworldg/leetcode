@@ -11,6 +11,9 @@
  *     int val;
  *     struct ListNode *next;
  * };
+ * 思路：1、创建哑结点，连接head
+ *      2、从哑节点开始循环，如果下一个节点值符合条件就删除，指向再下一个节点
+ *      3、如果不符合，则移动当前指针到下一个节点。
  */
 #include<stdio.h>
 #include<stdlib.h>
