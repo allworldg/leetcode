@@ -1,27 +1,24 @@
-#include <stdio.h>
-#include <stdlib.h>
+/*
+ * @lc app=leetcode.cn id=203 lang=c
+ *
+ * [203] 移除链表元素
+ */
 
+// @lc code=start
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+#include<stdio.h>
+#include<stdlib.h>
 struct ListNode
 {
     int val;
     struct ListNode *next;
 };
-
-struct ListNode *createNode(int val)
-{
-    struct ListNode *newNode = malloc(sizeof(struct ListNode));
-    if (newNode)
-    {
-        newNode->val = val;
-        newNode->next = NULL;
-    }
-    return newNode;
-}
-
-void connected(struct ListNode *node1, struct ListNode *node2)
-{
-    node1->next = node2;
-}
 
 struct ListNode *removeElements(struct ListNode *head, int val)
 {
@@ -46,12 +43,4 @@ struct ListNode *removeElements(struct ListNode *head, int val)
     }
     return dummyNode->next;
 }
-
-int main()
-{
-    struct ListNode *node1 = createNode(7);
-    struct ListNode *node2 = createNode(7);
-    connected(node1, node2);
-    removeElements(node1, 7);
-    return 0;
-}
+// @lc code=end
