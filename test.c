@@ -68,15 +68,13 @@ struct ListNode *oddEvenList(struct ListNode *head)
 
 int main()
 {
-    struct ListNode *a = createNode(1);
-    struct ListNode *b = createNode(2);
-    struct ListNode *c = createNode(3);
-    struct ListNode *d = createNode(4);
-    struct ListNode *e = createNode(5);
-    a->next = b;
-    b->next = c;
-    c->next = d;
-    d->next = e;
-    oddEvenList(a);
+    int flag = 1;
+    if(flag){
+        printf("hahahah");
+    }
+    flag = 0;
+    if(flag){
+        printf("losldkfjlkdsfj");
+    }
     return 0;
 }
