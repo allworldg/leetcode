@@ -1,4 +1,8 @@
+import java.util.HashSet;
+
 import javax.management.NotificationEmitter;
+
+import org.graalvm.compiler.graph.Node;
 
 /**
  * @Classname Main
@@ -8,11 +12,8 @@ import javax.management.NotificationEmitter;
  */
 public class Main {
     public static void main(String[] args) {
-        Solution solution = new Solution();
-        Node node = solution.create(1);
-        Node node2 = solution.create(2);
-        node.child = node2;
-        solution.flatten(node);
+        HashSet<Node> hashSet = new HashSet();
+            
         return ;
     }
 }
