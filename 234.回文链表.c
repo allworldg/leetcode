@@ -30,23 +30,26 @@ struct ListNode
 };
 bool isPalindrome(struct ListNode *head)
 {
-    if (head == NULL)
+    if (head == NULL || head->next == NULL)
     {
-        return NULL;
+        return true;
     }
     int arr[500001];
     int index = 0;
     struct ListNode *cur = head;
-    while(cur->next){
+    while (cur->next)
+    {
         cur = cur->next;
         arr[index] = cur->val;
         index++;
     }
     int i = 0;
-    int j = index-1;
+    int j = index - 1;
     int end = j / 2;
-    while(i<=end){
-        if(arr[i]!=arr[j]){
+    while (i <= end)
+    {
+        if (arr[i] != arr[j])
+        {
             return false;
         }
         i++;
@@ -54,9 +57,11 @@ bool isPalindrome(struct ListNode *head)
     }
     return true;
 }
-struct ListNode* reverse(struct ListNode* head){
+struct ListNode *reverse(struct ListNode *head)
+{
     struct ListNode *pre = NULL;
-    while(head){
+    while (head)
+    {
         struct ListNode *next = head->next;
         head->next = pre;
         pre = head;
@@ -65,20 +70,25 @@ struct ListNode* reverse(struct ListNode* head){
     return pre;
 }
 
-bool isPalindrome2(struct ListNode *head){
-     if(head==NULL){
-         return false;
-     }
-     struct ListNode *quick = head;
-     struct ListNode *slow = head;
-     while(quick->next&&quick->next->next){
-         quick = quick->next->next;
-         slow = slow->next;
-     }
-     quick = reverse(slow->next);
-     slow = head;
-    while(quick!=NULL){
-        if(slow->val!=quick->val){
+bool isPalindrome2(struct ListNode *head)
+{
+    if (head == NULL)
+    {
+        return false;
+    }
+    struct ListNode *quick = head;
+    struct ListNode *slow = head;
+    while (quick->next && quick->next->next)
+    {
+        quick = quick->next->next;
+        slow = slow->next;
+    }
+    quick = reverse(slow->next);
+    slow = head;
+    while (quick != NULL)
+    {
+        if (slow->val != quick->val)
+        {
             return false;
         }
         quick = quick->next;
