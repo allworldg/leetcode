@@ -20,13 +20,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct Node
-{
-    int val;
-    struct Node *next;
-    struct Node *random;
-};
-
 struct Node *create(int val)
 {
     struct Node *node = malloc(sizeof(struct Node));
@@ -49,7 +42,6 @@ struct Node *copyRandomList(struct Node *head)
         new->val = cur->val;
         new->next = cur->next;
         new->random = NULL;
-        struct Node *next = cur->next;//记录下一个节点，准备开始移动
         cur->next = new;
         cur = new->next; //跳到下一个旧节点
     }
@@ -70,24 +62,4 @@ struct Node *copyRandomList(struct Node *head)
     return head->next;
 }
 
-int main()
-{
-    struct Node *node1 = create(7);
-    struct Node *node2 = create(13);
-    struct Node *node3 = create(11);
-    struct Node *node4 = create(10);
-    struct Node *node5 = create(1);
-    node1->next = node2;
-    node2->next = node3;
-    node3->next = node4;
-    node4->next = node5;
-
-    node1->random = NULL;
-    node2->random = node1;
-    node3->random = node5;
-    node4->random = node3;
-    node5->random = node1;
-
-    copyRandomList(node1);
-}
 // @lc code=end
