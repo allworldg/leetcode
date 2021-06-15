@@ -29,57 +29,57 @@ struct ListNode *createNode(int val)
     node->val = val;
     return node;
 }
-struct ListNode* mergeList(struct ListNode* l,struct ListNode* r){
-    struct ListNode* newNode = malloc(sizeof(struct ListNode));
-    newNode->next = -1;
-    newNode->next = NULL;
-    struct ListNode* cur = newNode;
-    while(l&&r){
-        if(l->val<r->val){
-            cur->next = l;
-            l = l->next;
-        }else{
-            cur->next = r;
-            r = r->next;
-        }
-        cur = cur->next;
+struct ListNode* reverse(struct ListNode* head){
+    struct ListNode* newHead = NULL;
+    while(head){
+        struct ListNode* nextTemp = head->next;
+        head->next = newHead;
+        newHead = head;
+        head = nextTemp;
     }
-    cur->next = l==NULL?r:l;
-    return newNode->next;
+    return newHead;
 }
 
-struct ListNode* mergeSort(struct ListNode* head){
+void reorderList(struct ListNode* head){
     if(head==NULL||head->next==NULL){
         return head;
     }
-    struct ListNode *slow,*quick,*l,*r;
-    slow = head;
-    quick = head->next->next;
+    struct ListNode* dummyNode = malloc(sizeof(struct ListNode));
+    dummyNode->val = -1;
+    dummyNode->next = head;
+    struct ListNode * quick = dummyNode;
+    struct ListNode *slow = dummyNode;
     while(quick&&quick->next){
         quick = quick->next->next;
         slow = slow->next;
     }
-    r = mergeSort(slow->next);
-    slow->next= NULL;
-    l = mergeSort(head);
-    return mergeList(l,r);
+    struct ListNode* newNode =slow->next;
+    slow->next = NULL;
+    newNode = reverse(newNode);
+    struct ListNode* cur1 = dummyNode->next;
+    while(cur1&&newNode){
+        struct ListNode* nextTemp1 = cur1->next;
+        struct ListNode* nextTemp2 = newNode->next;
+        newNode->next = cur1->next;
+        cur1->next = newNode;
+        cur1 = nextTemp1;
+        newNode = nextTemp2;
+
+        
+    }
+    return dummyNode->next;
 }
-
-
-struct ListNode* sortList(struct ListNode* head){
-     return mergeSort(head);
-}
-
 
 int main()
 {
-    struct ListNode *node1 = createNode(4);
+    struct ListNode *node1 = createNode(1);
     struct ListNode *node2 = createNode(2);
-    struct ListNode *node3 = createNode(1);
-    struct ListNode *node4 = createNode(3);
+    struct ListNode *node3 = createNode(3);
+    struct ListNode *node4 = createNode(4);
     node1->next = node2;
     node2->next = node3;
     node3->next = node4;
-    struct ListNode *head = sortList(node1);
+    // node5->next = node6;
+    reorderList(node1);
     return 0;
 }
