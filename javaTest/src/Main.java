@@ -1,4 +1,7 @@
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Stack;
 
 /**
@@ -9,7 +12,11 @@ import java.util.Stack;
  */
 public class Main {
     public static void main(String[] args) {
-      
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        arrayList.add(1);
+        arrayList.add(0);
+        arrayList.sort((o1, o2) -> o1-o2);
+        return;
     }
 }
 
