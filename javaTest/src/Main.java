@@ -1,4 +1,4 @@
-import java.util.LinkedList;
+
 import java.util.Stack;
 
 /**
@@ -9,10 +9,7 @@ import java.util.Stack;
  */
 public class Main {
     public static void main(String[] args) {
-        MyQueue myQueue = new MyQueue();
-        myQueue.push(1);
-        myQueue.push(2);
-        myQueue.pop();
+      
     }
 }
 
