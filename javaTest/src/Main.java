@@ -12,55 +12,19 @@ import java.util.Stack;
  */
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Integer> arrayList = new ArrayList<>();
-        arrayList.add(1);
-        arrayList.add(0);
-        arrayList.sort((o1, o2) -> o1-o2);
-        return;
-    }
-}
-
-class MyQueue {
-    Stack<Integer> stack1;
-    Stack<Integer> stack2;
-
-    /** Initialize your data structure here. */
-    public MyQueue() {
-        this.stack1 = new Stack<Integer>();
-        this.stack2 = new Stack<Integer>();
-    }
-
-    /** Push element x to the back of queue. */
-    public void push(int x) {
-        stack2.push(x);
-    }
-
-    /** Removes the element from in front of queue and returns that element. */
-    public int pop() {
-        if(stack2.isEmpty()){
-            while(stack1.isEmpty()){
-                stack2.push(stack1.pop());
-            }
+        int x = 628;
+        int[] nums = {100,50,20,10,5,2,1};
+        int i=0;
+        int count = 0;
+        int length = nums.length;
+        while(i<length){
+            int use = x/nums[i];
+            count += use;
+            x = x-use*nums[i];
+            System.out.println("需要面额"+nums[i]+"，需要"+use+"张");
+            i++;
+            System.out.println("还剩"+x+"金额");
         }
-        return stack2.pop();
-    }
-
-    /** Get the front element. */
-    public int peek() {
-        return stack2.peek();
-    }
-
-    /** Returns whether the queue is empty. */
-    public boolean empty() {
-        return stack2.isEmpty();
+        System.out.println(count);
     }
 }
-
-/**
- * Your MyQueue object will be instantiated and called as such:
- * MyQueue obj = new MyQueue();
- * obj.push(x);
- * int param_2 = obj.pop();
- * int param_3 = obj.peek();
- * boolean param_4 = obj.empty();
- */
