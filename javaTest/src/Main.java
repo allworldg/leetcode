@@ -12,27 +12,35 @@ import java.util.Stack;
  */
 public class Main {
     public static void main(String[] args) {
-       Solution solution = new Solution();
-       int[] nums = {7,0,9,6,9,6,1,7,9,0,1,2,9,0,3};
-        System.out.println(solution.jump(nums));
+        int[][]x ={{10,16},{2,8},{1,6},{7,12}};
+        Solution solution = new Solution();
+        solution.findMinArrowShots(x);
     }
 }
 class Solution {
-    public int jump(int[] nums) {
-        if (nums.length < 2) {
+    public int findMinArrowShots(int[][] points) {
+        if (points.length == 0) {
             return 0;
         }
-        int maxLenth = 0;
-        int count = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (maxLenth < i + nums[i]) {
-                maxLenth = i + nums[i];
-                count++;
-                if (maxLenth >= nums.length - 1) {
-                    return count;
+        Arrays.sort(points, new Comparator<int[]>() {
+            public int compare(int[] point1, int[] point2) {
+                if (point1[1] > point2[1]) {
+                    return 1;
+                } else if (point1[1] < point2[1]) {
+                    return -1;
+                } else {
+                    return 0;
                 }
             }
+        });
+        int pos = points[0][1];
+        int ans = 1;
+        for (int[] balloon: points) {
+            if (balloon[0] > pos) {
+                pos = balloon[1];
+                ++ans;
+            }
         }
-        return count;
+        return ans;
     }
 }
