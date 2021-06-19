@@ -12,19 +12,27 @@ import java.util.Stack;
  */
 public class Main {
     public static void main(String[] args) {
-        int x = 628;
-        int[] nums = {100,50,20,10,5,2,1};
-        int i=0;
-        int count = 0;
-        int length = nums.length;
-        while(i<length){
-            int use = x/nums[i];
-            count += use;
-            x = x-use*nums[i];
-            System.out.println("需要面额"+nums[i]+"，需要"+use+"张");
-            i++;
-            System.out.println("还剩"+x+"金额");
+       Solution solution = new Solution();
+       int[] nums = {7,0,9,6,9,6,1,7,9,0,1,2,9,0,3};
+        System.out.println(solution.jump(nums));
+    }
+}
+class Solution {
+    public int jump(int[] nums) {
+        if (nums.length < 2) {
+            return 0;
         }
-        System.out.println(count);
+        int maxLenth = 0;
+        int count = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (maxLenth < i + nums[i]) {
+                maxLenth = i + nums[i];
+                count++;
+                if (maxLenth >= nums.length - 1) {
+                    return count;
+                }
+            }
+        }
+        return count;
     }
 }
