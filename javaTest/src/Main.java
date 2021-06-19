@@ -1,8 +1,6 @@
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Stack;
+import java.security.PublicKey;
+import java.util.*;
 
 /**
  * @Classname Main
@@ -12,35 +10,9 @@ import java.util.Stack;
  */
 public class Main {
     public static void main(String[] args) {
-        int[][]x ={{10,16},{2,8},{1,6},{7,12}};
-        Solution solution = new Solution();
-        solution.findMinArrowShots(x);
+        int a = 1;
+        a -=1-2;
+        System.out.println(a);
     }
 }
-class Solution {
-    public int findMinArrowShots(int[][] points) {
-        if (points.length == 0) {
-            return 0;
-        }
-        Arrays.sort(points, new Comparator<int[]>() {
-            public int compare(int[] point1, int[] point2) {
-                if (point1[1] > point2[1]) {
-                    return 1;
-                } else if (point1[1] < point2[1]) {
-                    return -1;
-                } else {
-                    return 0;
-                }
-            }
-        });
-        int pos = points[0][1];
-        int ans = 1;
-        for (int[] balloon: points) {
-            if (balloon[0] > pos) {
-                pos = balloon[1];
-                ++ans;
-            }
-        }
-        return ans;
-    }
-}
+
