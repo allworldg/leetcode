@@ -10,9 +10,13 @@ import java.util.*;
  */
 public class Main {
     public static void main(String[] args) {
-        int a = 1;
-        a -=1-2;
-        System.out.println(a);
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        testArr(arrayList);
+        System.out.println(arrayList.get(0));
+    }
+
+    static void testArr(ArrayList<Integer> arr) {
+        arr.add(123);
     }
 }
 
